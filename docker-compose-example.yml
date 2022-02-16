@@ -1,0 +1,23 @@
+version: '3'
+services:
+    reverseproxy:
+        build:
+            context: ./.docker
+            dockerfile: Dockerfile
+        # image: reverseproxy
+        ports:
+            - 80:80
+        restart: always
+        volumes:
+            - './sites-enabled:/etc/nginx/sites-enabled'
+        networks:
+            - net-1
+            - net-2
+ 
+networks:
+    net-1:
+        external: true
+    net-2:
+        external: true
+#The nets of other docker-compose projects, must be external and it must be created before like this: 
+#docker network create net-1
