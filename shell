@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 if [ -z "$1" ]
   then
-    docker-compose exec --user www-data reverseproxy bash
+    docker-compose exec --user root reverseproxy bash
 else
     docker-compose exec --user $@ reverseproxy bash
 fi
